@@ -1,0 +1,12 @@
+{
+  "name": "@gang-of-front",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "dev:qwik": "pnpm --filter realworld-qwik dev",
+    "dev:conduit-api": "pnpm --filter conduit-api dev"
+  }
+}

@@ -10,5 +10,5 @@
     }
   },
   "defaultBase": "main",
-  "defaultProject": "@gang-of-front"
+  "defaultProject": "@gang-of-front/root"
 }

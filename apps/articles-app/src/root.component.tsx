@@ -2,7 +2,7 @@ import { HomePage, EditPage, ViewPage } from "./pages";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const routerConfig = {
-  basename: "/article",
+  basename: "/",
 };
 
 const router = createBrowserRouter(
@@ -12,16 +12,21 @@ const router = createBrowserRouter(
       element: <HomePage />,
     },
     {
-      path: "/create",
-      element: <EditPage />,
-    },
-    {
-      path: "/edit",
-      element: <EditPage />,
-    },
-    {
-      path: "/view",
-      element: <ViewPage />,
+      path: "/article",
+      children: [
+        {
+          path: "create",
+          element: <EditPage />,
+        },
+        {
+          path: "edit",
+          element: <EditPage />,
+        },
+        {
+          path: "view",
+          element: <ViewPage />,
+        },
+      ],
     },
   ],
   routerConfig

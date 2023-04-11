@@ -33,7 +33,7 @@ resource "cloudflare_pages_project" "demo_gangoffront_com" {
     type = "github"
     config {
       owner                         = "gang-of-front"
-      repo_name                     = "gangoffront.com"
+      repo_name                     = "mfe-architeture"
       production_branch             = "main"
       pr_comments_enabled           = true
       deployments_enabled           = false

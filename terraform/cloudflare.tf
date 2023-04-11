@@ -8,16 +8,6 @@ resource "cloudflare_record" "demo_gangoffront_com_pages" {
   zone_id = var.zone_id
 }
 
-resource "cloudflare_zone_settings_override" "demo_gangoffront_com_settings" {
-  zone_id = var.zone_id
-
-  settings {
-    tls_1_3                  = "on"
-    automatic_https_rewrites = "on"
-    ssl                      = "strict"
-  }
-}
-
 resource "cloudflare_pages_project" "demo_gangoffront_com" {
   account_id        = var.account_id
   name              = "demo-gangoffront-com"

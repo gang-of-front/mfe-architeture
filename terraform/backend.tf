@@ -3,7 +3,7 @@ terraform {
     organization = "gangoffront"
 
     workspaces {
-      name = "gangoffrontcom"
+      name = "mfe-architeture"
     }
   }
   required_providers {

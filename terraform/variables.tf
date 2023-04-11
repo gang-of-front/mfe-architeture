@@ -7,9 +7,9 @@ variable "account_id" {
 }
 
 variable "project_name" {
-  default = "gangoffront-com"
+  default = "demo-gangoffront-com"
 }
 
 variable "domain" {
-  default = "gangoffront.com"
+  default = "demo.gangoffront.com"
 }

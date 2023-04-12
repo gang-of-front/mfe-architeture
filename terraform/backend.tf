@@ -15,3 +15,15 @@ terraform {
 }
 
 provider "cloudflare" {}
+
+provider "aws" {
+  access_key = var.cloudflare_r2_access_key
+  secret_key = var.cloudflare_r2_secret_key
+  skip_credentials_validation = true
+  skip_region_validation = true
+  skip_requesting_account_id = true
+  endpoints {
+    s3 = format("https://%s.r2.cloudflarestorage.com", var.account_id)
+  }
+}
+

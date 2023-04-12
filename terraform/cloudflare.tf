@@ -33,3 +33,7 @@ resource "cloudflare_pages_project" "demo_gangoffront_com" {
     }
   }
 }
+
+resource "aws_s3_bucket" "cloudflare-bucket" {
+  bucket = var.project_name
+}

@@ -13,3 +13,7 @@ variable "project_name" {
 variable "domain" {
   default = "demo.gangoffront.com"
 }
+
+variable "cloudflare_r2_access_key" {}
+
+variable "cloudflare_r2_secret_key" {}

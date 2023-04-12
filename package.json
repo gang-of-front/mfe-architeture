@@ -1,5 +1,5 @@
 {
-  "name": "@gang-of-front",
+  "name": "gang-of-front",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -10,6 +10,6 @@
   },
   "devDependencies": {
     "husky": "^8.0.3",
-    "nx": "15.9.2"
+    "nx": "14.5.6"
   }
 }

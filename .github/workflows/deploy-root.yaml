@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build_publish:
+  root_publish:
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -30,3 +30,29 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
+  header_publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - uses: fkirc/skip-duplicate-actions@master
+        with:
+          cancel_others: true
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.2.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+      - run: pnpm i --no-frozen-lockfile --prefer-offline
+      - run: pnpm nx run @gang-of-front/header-app:build
+      - uses: andreiio/rclone-action@v1
+        with:
+          args: copy app/header-app/dist r2assets:demo-gangoffront-com
+        env:
+          RCLONE_CONFIG_S3_TYPE: s3
+          RCLONE_CONFIG_S3_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
+          RCLONE_CONFIG_S3_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+

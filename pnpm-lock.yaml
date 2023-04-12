@@ -3,6 +3,9 @@ lockfileVersion: '6.0'
 importers:
 
   .:
+    specifiers:
+      husky: ^8.0.3
+      nx: 15.9.2
     devDependencies:
       husky:
         specifier: ^8.0.3

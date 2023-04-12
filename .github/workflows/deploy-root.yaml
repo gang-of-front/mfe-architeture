@@ -48,11 +48,10 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i --no-frozen-lockfile --prefer-offline
       - run: pnpm nx run @gang-of-front/header-app:build
-      - uses: andreiio/rclone-action@v1
+      - name: Setup Rclone
+        uses: AnimMouse/setup-rclone@v1
         with:
-          args: copy app/header-app/dist r2assets:demo-gangoffront-com
-        env:
-          RCLONE_CONFIG_S3_TYPE: s3
-          RCLONE_CONFIG_S3_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}
-          RCLONE_CONFIG_S3_SECRET_ACCESS_KEY: ${{ secrets.SECRET_ACCESS_KEY }}
+          rclone_config: ${{ secrets.RCLONE_CONFIG }}
+          
+      - run: rclone copy source:apps/header-app/dist dest:r2assets:demo-gangoffront-com
 

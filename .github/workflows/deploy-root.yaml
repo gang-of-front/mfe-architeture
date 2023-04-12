@@ -53,5 +53,5 @@ jobs:
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
           
-      - run: rclone copy source:apps/header-app/dist dest:r2assets:demo-gangoffront-com
+      - run: rclone copy apps/header-app/dist r2assets:demo-gangoffront-com
 

@@ -8,7 +8,7 @@ importers:
         specifier: ^8.0.3
         version: 8.0.3
       nx:
-        specifier: ^15.9.2
+        specifier: 15.9.2
         version: 15.9.2
 
   apps/articles-app:

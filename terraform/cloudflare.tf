@@ -43,6 +43,6 @@ resource "cloudflare_record" "assets_gangoffront_com" {
   proxied = true
   ttl     = 1
   type    = "CNAME"
-  value   = "https://5df477d4f9a8cf72185ef8f44fd1e144.r2.cloudflarestorage.com"
+  value   = format("%s.r2.cloudflarestorage.com", var.account_id)
   zone_id = var.zone_id
 }

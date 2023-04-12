@@ -37,3 +37,12 @@ resource "cloudflare_pages_project" "demo_gangoffront_com" {
 resource "aws_s3_bucket" "cloudflare-bucket" {
   bucket = var.project_name
 }
+
+resource "cloudflare_record" "assets_gangoffront_com" {
+  name    = "assets"
+  proxied = true
+  ttl     = 1
+  type    = "CNAME"
+  value   = format("https://5df477d4f9a8cf72185ef8f44fd1e144.r2.cloudflarestorage.com/%s", var.project_name)
+  zone_id = var.zone_id
+}

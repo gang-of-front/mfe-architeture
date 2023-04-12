@@ -23,7 +23,7 @@ jobs:
           node-version: '18'
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm nx build
+      - run: pnpm --filter root build
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:

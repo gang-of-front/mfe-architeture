@@ -50,7 +50,7 @@ jobs:
       - run: pnpm nx run @gang-of-front/header-app:build
       - uses: andreiio/rclone-action@v1
         with:
-          args: copy app/header-app/dist https://5df477d4f9a8cf72185ef8f44fd1e144.r2.cloudflarestorage.com/demo-gangoffront-com
+          args: copy app/header-app/dist r2assets:demo-gangoffront-com
         env:
           RCLONE_CONFIG_S3_TYPE: s3
           RCLONE_CONFIG_S3_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY_ID }}

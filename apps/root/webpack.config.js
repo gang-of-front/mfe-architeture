@@ -1,12 +1,16 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const packJson = require("./package.json");
 
 module.exports = (webpackConfigEnv, argv) => {
-  const orgName = "gang-of-front";
+  const [orgName, projectName] = packJson.name
+    .split("/")
+    .map((value) => value.replace("@", ""));
+
   const defaultConfig = singleSpaDefaults({
     orgName,
-    projectName: "root-config",
+    projectName,
     webpackConfigEnv,
     argv,
     disableHtmlGeneration: true,

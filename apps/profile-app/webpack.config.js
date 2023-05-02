@@ -1,10 +1,15 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const packJson = require('./package.json')
 
 module.exports = (webpackConfigEnv, argv) => {
+  const [orgName, projectName] = packJson.name
+  .split("/")
+  .map((value) => value.replace("@", ""));
+
   const defaultConfig = singleSpaDefaults({
-    orgName: "gang-of-front",
-    projectName: "profile-app",
+    orgName,
+    projectName,
     webpackConfigEnv,
     argv,
   });

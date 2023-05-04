@@ -1,5 +1,5 @@
 {
-  "name": "@gang-of-front/root",
+  "name": "@gang-of-front/root-config",
   "scripts": {
     "start": "webpack serve --port 9000 --env isLocal",
     "dev": "webpack serve --port 9000 --env isLocal",

@@ -3,12 +3,10 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build"
-        ]
+        "cacheableOperations": ["build"]
       }
     }
   },
   "defaultBase": "main",
-  "defaultProject": "@gang-of-front/root"
+  "defaultProject": "@gang-of-front/root-config"
 }

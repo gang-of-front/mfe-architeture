@@ -1,6 +1,6 @@
 {
   "extends": "ts-config-single-spa",
-  "files": ["src/gang-of-front-root-config.ts"],
+  "files": ["src/gang-of-front-root.ts"],
   "compilerOptions": {
     "declarationDir": "dist"
   },

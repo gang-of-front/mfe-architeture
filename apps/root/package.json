@@ -1,5 +1,5 @@
 {
-  "name": "@gang-of-front/root-config",
+  "name": "@gang-of-front/root",
   "scripts": {
     "start": "webpack serve --port 9000 --env isLocal",
     "dev": "webpack serve --port 9000 --env isLocal",
@@ -45,5 +45,5 @@
     "@types/webpack-env": "^1.16.2",
     "single-spa-layout": "^1.6.0"
   },
-  "types": "dist/gang-of-front-root-config.d.ts"
+  "types": "dist/gang-of-front-root.d.ts"
 }

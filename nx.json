@@ -8,5 +8,5 @@
     }
   },
   "defaultBase": "main",
-  "defaultProject": "@gang-of-front/root-config"
+  "defaultProject": "@gang-of-front/root"
 }

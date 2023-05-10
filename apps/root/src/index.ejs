@@ -64,6 +64,12 @@
     <!-- Add your organization's prod import map URL to this script's src  -->
     <!-- <script type="systemjs-importmap" src="/importmap.json"></script> -->
 
+    <% if (environment==="production" ) { %>
+      <script type="systemjs-importmap" src="https://assets.gangoffront.com/microfrontends/prod/import-map.json"></script>
+    <% } else { %>
+      <script type="systemjs-importmap" src="https://assets.gangoffront.com/microfrontends/prod/import-map.json"></script>
+    <% } %>
+
     <% if (isLocal) { %>
     <script type="systemjs-importmap">
       {

@@ -70,6 +70,13 @@
       <script type="systemjs-importmap" src="https://assets.gangoffront.com/microfrontends/prod/import-map.json"></script>
     <% } %>
 
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@gang-of-front/root-config": "./gang-of-front-root-config.js",
+        }
+      }
+    </script>
     <% if (isLocal) { %>
     <script type="systemjs-importmap">
       {

@@ -1,7 +1,7 @@
 {
   "name": "@gang-of-front/header-app",
   "scripts": {
-    "gof-cli": "gof-cli",
+    "update-import-map": "gof-cli microfrontends-import-map",
     "start": "webpack serve --port 8001",
     "dev": "webpack serve --env standalone",
     "build": "concurrently pnpm:build:*",

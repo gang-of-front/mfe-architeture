@@ -30,6 +30,7 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
+
   header_publish:
     runs-on: ubuntu-latest
     environment:
@@ -53,5 +54,5 @@ jobs:
         with:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
           
-      - run: rclone copy apps/header-app/dist r2assets:demo-gangoffront-com/header-app/${GITHUB_SHA:0:7}
+      - run: rclone copy apps/header-app/dist r2assets:demo-gangoffront-com/microfrontends/prod/gang-of-front/header-app/${GITHUB_SHA:0:7}
 

@@ -58,5 +58,7 @@ jobs:
       
       - name: Update import map
         env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
         run: pnpm gof-cli microfrontends-import-map --hash ${GITHUB_SHA:0:7} --bucket demo-gangoffront-com --s3Endpoint ${R2_ENDPOINT} --domainBucket https://assets.gangoffront.com --remoteVerify true --environment prod

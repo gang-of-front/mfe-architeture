@@ -55,4 +55,8 @@ jobs:
           rclone_config: ${{ secrets.RCLONE_CONFIG }}
           
       - run: rclone copy apps/header-app/dist r2assets:demo-gangoffront-com/microfrontends/prod/gang-of-front/header-app/${GITHUB_SHA:0:7}
-
+      
+      - name: Update import map
+        env:
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: pnpm gof-cli microfrontends-import-map --hash ${GITHUB_SHA:0:7} --bucket demo-gangoffront-com --s3Endpoint ${R2_ENDPOINT} --domainBucket https://assets.gangoffront.com --remoteVerify true --environment prod

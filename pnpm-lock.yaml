@@ -4,11 +4,11 @@ importers:
 
   .:
     specifiers:
-      '@gang-of-front/cli': ^1.3.0
+      '@gang-of-front/cli': ^1.4.0
       husky: 8.0.3
       nx: 14.5.6
     dependencies:
-      '@gang-of-front/cli': 1.3.0
+      '@gang-of-front/cli': 1.4.0
     devDependencies:
       husky: 8.0.3
       nx: 14.5.6
@@ -2744,8 +2744,8 @@ packages:
       heap: 0.2.7
     dev: false
 
-  /@gang-of-front/cli/1.3.0:
-    resolution: {integrity: sha512-0bfyzqkPVL8Jre0SNcFjWI/1kcpP/2sWpJvV3bCpMSCIMRO8JjyDUg2BRZLZjrPRVrVG7V7bWywGcatZKu9DfQ==}
+  /@gang-of-front/cli/1.4.0:
+    resolution: {integrity: sha512-Zh+ERoxPzjcT3Sy+RVMbf4CnV3eYhF5sfq7OEzF60C1tr+zh/9U17bJRWt7X75iFuH0Pwhl3m6u/v9Euxe3Twg==}
     hasBin: true
     dependencies:
       '@auth0/s3': 1.0.0

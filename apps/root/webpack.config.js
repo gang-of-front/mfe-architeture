@@ -25,6 +25,7 @@ module.exports = (webpackConfigEnv, argv) => {
         templateParameters: {
           isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
           orgName,
+          environment: webpackConfigEnv.environment
         },
       }),
     ],

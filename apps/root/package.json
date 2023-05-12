@@ -1,6 +1,8 @@
 {
   "name": "@gang-of-front/root",
   "scripts": {
+    "update-import-map": "gof-cli microfrontends-import-map",
+    "sync": "gof-cli microfrontends-sync",
     "start": "webpack serve --port 9000 --env isLocal",
     "dev": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js,ts,tsx",

@@ -70,26 +70,14 @@
       <script type="systemjs-importmap" src="https://assets.gangoffront.com/microfrontends/prod/import-map.json"></script>
     <% } %>
 
-    <script type="systemjs-importmap">
-      {
-        "imports": {
-          "@gang-of-front/root": "./gang-of-front-root-config.js"
-        }
-      }
-    </script>
     <% if (isLocal) { %>
-    <script type="systemjs-importmap">
-      {
-        "imports": {
-          "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-          "@gang-of-front/root": "//localhost:9000/gang-of-front-root.js",
-          "@gang-of-front/header-app": "//localhost:8001/gang-of-front-header-app.js",
-          "@gang-of-front/footer-app": "//localhost:8002/gang-of-front-footer-app.js",
-          "@gang-of-front/articles-app": "//localhost:8003/gang-of-front-articles-app.js",
-          "@gang-of-front/profile-app": "//localhost:8004/gang-of-front-profile-app.js"
+      <script type="systemjs-importmap">
+        {
+          "imports": {
+            "@gang-of-front/root": "./gang-of-front-root-config.js"
+          }
         }
-      }
-    </script>
+      </script>
     <% } %>
 
     <!--

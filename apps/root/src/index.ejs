@@ -82,7 +82,7 @@
       {
         "imports": {
           "@single-spa/welcome": "https://unpkg.com/single-spa-welcome/dist/single-spa-welcome.js",
-          "@gang-of-front/root-config": "//localhost:9000/gang-of-front-root-config.js",
+          "@gang-of-front/root": "//localhost:9000/gang-of-front-root.js",
           "@gang-of-front/header-app": "//localhost:8001/gang-of-front-header-app.js",
           "@gang-of-front/footer-app": "//localhost:8002/gang-of-front-footer-app.js",
           "@gang-of-front/articles-app": "//localhost:8003/gang-of-front-articles-app.js",
@@ -110,7 +110,7 @@
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <script>
-      System.import("@gang-of-front/root-config");
+      System.import("@gang-of-front/root");
     </script>
     <import-map-overrides-full
       show-when-local-storage="devtools"

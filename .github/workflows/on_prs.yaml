@@ -15,6 +15,10 @@ jobs:
       - name: Setup & Install
         uses: ./.github/actions/setup-install
 
+      - name: Install NX
+        run: sudo npm install -g nx
+        shell: bash
+
       - name: Check for Affected Projects
         uses: dkhunt27/action-nx-affected-list@v4
         id: checkForAffected

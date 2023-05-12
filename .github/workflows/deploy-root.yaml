@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'pnpm'
-      - run: pnpm install --prefer-offline --no-frozen-lockfile
+      - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm nx build
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
@@ -47,7 +47,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'pnpm'
-      - run: pnpm install --no-frozen-lockfile --prefer-offline
+      - run: pnpm install --frozen-lockfile --prefer-offline
 
       - run: pnpm nx run @gang-of-front/header-app:build
       
@@ -56,7 +56,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-        run: pnpm nx run @gang-of-front/header-app:sync --dist apps/header-app/dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=prod
+        run: pnpm nx run @gang-of-front/header-app:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=prod
 
       - name: Update import map
         env:

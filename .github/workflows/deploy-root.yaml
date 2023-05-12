@@ -28,11 +28,9 @@ jobs:
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
 
   header_app:
-    runs-on: ubuntu-latest
+    uses: ./.github/workflows/workflow-mfe.yaml
+    secrets: inherit
+    with:
+      appName: header-app
     environment:
       name: production
-    steps:
-      - uses: ./.github/workflows/workflow-mfe.yaml
-        secrets: inherit
-        with:
-          appName: header-app

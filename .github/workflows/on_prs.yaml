@@ -15,10 +15,6 @@ jobs:
       - name: Setup & Install
         uses: ./.github/actions/setup-install
 
-      - name: Install NX
-        run: pnpm add -g nx
-        shell: bash
-
       - name: Check for Affected Projects
         uses: gang-of-front/action-nx-affected-list@main
         id: checkForAffected

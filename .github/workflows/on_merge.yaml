@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  root_publish:
+  root_app:
     runs-on: ubuntu-latest
     environment:
       name: production
@@ -26,6 +26,13 @@ jobs:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
+
+  root_assets:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    secrets: inherit
+    with:
+      appName: root-app
+      environment: production
 
   header_app:
     uses: ./.github/workflows/workflow-mfe.yaml

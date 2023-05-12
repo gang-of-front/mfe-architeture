@@ -8,8 +8,13 @@ jobs:
   affected:
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: staging
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
+
       - name: Check for Affected Projects
         uses: dkhunt27/action-nx-affected-list@v4
         id: checkForAffected

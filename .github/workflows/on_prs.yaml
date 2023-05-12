@@ -20,7 +20,7 @@ jobs:
         shell: bash
 
       - name: Check for Affected Projects
-        uses: dkhunt27/action-nx-affected-list@v4
+        uses: gang-of-front/action-nx-affected-list@main
         id: checkForAffected
   # root_app:
   #   runs-on: ubuntu-latest

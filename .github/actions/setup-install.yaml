@@ -1,0 +1,30 @@
+inputs:
+  node-version:
+    description: 'Version of node'
+    required: false
+    default: '18'
+
+  pnpm-version:
+    description: 'Version of pnpm'
+    required: false
+    default: '7.18.0'
+
+runs:
+  using: "composite"
+  steps:
+    - uses: fkirc/skip-duplicate-actions@master
+      with:
+        cancel_others: true
+
+    - uses: actions/checkout@v3
+
+    - uses: pnpm/action-setup@v2
+      with:
+        version: {{ inputs.pnpm-version }}
+
+    - uses: actions/setup-node@v3
+      with:
+        node-version: {{ inputs.node-version }}
+        cache: 'pnpm'
+
+    - run: pnpm install --prefer-offline --frozen-lockfile

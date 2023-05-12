@@ -11,22 +11,7 @@ jobs:
     environment:
       name: production
     steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          cancel_others: true
-
-      - uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7.18.0
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-
-      - run: pnpm install --prefer-offline --frozen-lockfile
+      - uses: ./.github/actions/setup-install
 
       - run: pnpm nx build
 
@@ -42,22 +27,7 @@ jobs:
     environment:
       name: production
     steps:
-      - uses: fkirc/skip-duplicate-actions@master
-        with:
-          cancel_others: true
-
-      - uses: actions/checkout@v3
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7.18.0
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-
-      - run: pnpm install --frozen-lockfile --prefer-offline
+      - uses: ./.github/actions/setup-install
 
       - run: pnpm nx run @gang-of-front/header-app:build
       

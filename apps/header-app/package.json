@@ -2,6 +2,7 @@
   "name": "@gang-of-front/header-app",
   "scripts": {
     "update-import-map": "gof-cli microfrontends-import-map",
+    "sync": "gof-cli microfrontends-sync",
     "start": "webpack serve --port 8001",
     "dev": "webpack serve --env standalone",
     "build": "concurrently pnpm:build:*",

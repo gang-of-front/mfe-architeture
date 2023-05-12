@@ -6,6 +6,9 @@ on:
       appName:
         required: true
         type: string
+      environment:
+        required: true
+        type: string
     secrets:
       AWS_ACCESS_KEY_ID: 
         required: true
@@ -17,6 +20,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment }}
     steps:
       - uses: actions/checkout@v3
 

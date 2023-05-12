@@ -32,5 +32,4 @@ jobs:
     secrets: inherit
     with:
       appName: header-app
-    environment:
-      name: production
+      environment: production

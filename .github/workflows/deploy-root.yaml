@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup-install
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
 
       - run: pnpm nx build
 
@@ -31,20 +32,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - uses: ./.github/actions/setup-install
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
 
-      - run: pnpm nx run @gang-of-front/header-app:build
-      
-      - name: Sync files
-        env:
+      - name: Build & Deploy
+        uses: ./.github/actions/build-deploy-mfe
+        with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-        run: pnpm nx run @gang-of-front/header-app:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=prod
-
-      - name: Update import map
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-        run: pnpm nx run @gang-of-front/header-app:update-import-map --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --domainBucket='https://assets.gangoffront.com' --remoteVerify=false --environment=prod
+          APP_NAME: header-app

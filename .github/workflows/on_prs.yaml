@@ -16,7 +16,7 @@ jobs:
         uses: ./.github/actions/setup-install
 
       - name: Install NX
-        run: sudo pnpm add -g nx
+        run: pnpm add -g nx
         shell: bash
 
       - name: Check for Affected Projects

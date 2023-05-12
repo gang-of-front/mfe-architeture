@@ -31,7 +31,7 @@ jobs:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
-      appName: root-app
+      appName: root
       environment: production
 
   header_app:

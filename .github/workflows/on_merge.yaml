@@ -34,9 +34,31 @@ jobs:
       appName: root
       environment: production
 
+  articles-app:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    secrets: inherit
+    with:
+      appName: articles-app
+      environment: production
+
+  footer_app:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    secrets: inherit
+    with:
+      appName: footer-app
+      environment: production
+
   header_app:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: header-app
       environment: production
+
+  profile_app:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    secrets: inherit
+    with:
+      appName: profile-app
+      environment: production
+

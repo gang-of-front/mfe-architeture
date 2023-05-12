@@ -14,16 +14,22 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@master
         with:
           cancel_others: true
+
       - uses: actions/checkout@v3
+
       - uses: pnpm/action-setup@v2
         with:
-          version: 8.2.0
+          version: 7.18.0
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'pnpm'
+
       - run: pnpm install --prefer-offline --frozen-lockfile
+
       - run: pnpm nx build
+
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
@@ -39,14 +45,18 @@ jobs:
       - uses: fkirc/skip-duplicate-actions@master
         with:
           cancel_others: true
+
       - uses: actions/checkout@v3
+
       - uses: pnpm/action-setup@v2
         with:
-          version: 8.2.0
+          version: 7.18.0
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'pnpm'
+
       - run: pnpm install --frozen-lockfile --prefer-offline
 
       - run: pnpm nx run @gang-of-front/header-app:build

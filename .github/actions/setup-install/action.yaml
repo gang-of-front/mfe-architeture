@@ -18,11 +18,11 @@ runs:
 
     - uses: pnpm/action-setup@v2
       with:
-        version: {{ inputs.pnpm-version }}
+        version: ${{ inputs.pnpm-version }}
 
     - uses: actions/setup-node@v3
       with:
-        node-version: {{ inputs.node-version }}
+        node-version: ${{ inputs.node-version }}
         cache: 'pnpm'
 
     - run: pnpm install --prefer-offline --frozen-lockfile

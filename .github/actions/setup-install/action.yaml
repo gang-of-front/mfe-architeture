@@ -26,3 +26,4 @@ runs:
         cache: 'pnpm'
 
     - run: pnpm install --prefer-offline --frozen-lockfile
+      shell: bash

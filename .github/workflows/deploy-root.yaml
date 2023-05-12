@@ -16,29 +16,23 @@ jobs:
       - name: Setup & Install
         uses: ./.github/actions/setup-install
 
-      - run: pnpm nx build
+      - name: Build app
+        run: pnpm nx build
+        shell: bash
 
-      - name: Publish
+      - name: Deploy root app
         uses: cloudflare/wrangler-action@2.0.0
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
 
-  header_publish:
+  header_app:
     runs-on: ubuntu-latest
     environment:
       name: production
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup & Install
-        uses: ./.github/actions/setup-install
-
-      - name: Build & Deploy
-        uses: ./.github/actions/build-deploy-mfe
+      - uses: ./.github/workflows/workflow-mfe.yaml
+        secrets: inherit
         with:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
-          APP_NAME: header-app
+          appName: header-app

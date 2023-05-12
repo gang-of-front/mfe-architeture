@@ -16,8 +16,6 @@ runs:
       with:
         cancel_others: true
 
-    - uses: actions/checkout@v3
-
     - uses: pnpm/action-setup@v2
       with:
         version: {{ inputs.pnpm-version }}

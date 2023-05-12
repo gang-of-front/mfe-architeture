@@ -11,6 +11,8 @@ jobs:
     environment:
       name: production
     steps:
+      - uses: actions/checkout@v3
+
       - uses: ./.github/actions/setup-install
 
       - run: pnpm nx build
@@ -27,6 +29,8 @@ jobs:
     environment:
       name: production
     steps:
+      - uses: actions/checkout@v3
+
       - uses: ./.github/actions/setup-install
 
       - run: pnpm nx run @gang-of-front/header-app:build

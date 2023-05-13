@@ -11,12 +11,11 @@ jobs:
       name: staging
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Setup & Install
         uses: ./.github/actions/setup-install
-
-      - run: git fetch origin main
-        shell: bash
 
       - name: Check for Affected Projects
         uses: gang-of-front/action-nx-affected-list@main

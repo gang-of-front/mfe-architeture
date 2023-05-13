@@ -6,10 +6,31 @@ on:
       - main
 
 jobs:
-  root_app:
+  affected:
     runs-on: ubuntu-latest
     environment:
-      name: prod
+      name: production
+    outputs:
+      affected: ${{ steps.checkForAffected.outputs.affected }}
+      hasAffected: ${{ steps.checkForAffected.outputs.hasAffected }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
+
+      - name: Check for Affected Projects
+        uses: ./.github/actions/affected
+        id: checkForAffected
+
+  root_app:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'root')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - uses: actions/checkout@v3
 
@@ -28,37 +49,47 @@ jobs:
           command: pages publish apps/root/dist --project-name=demo-gangoffront-com
 
   root_assets:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'root')
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: root
-      environment: prod
+      environment: production
 
   articles-app:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'articles-app')
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: articles-app
-      environment: prod
+      environment: production
 
   footer_app:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'footer-app')
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: footer-app
-      environment: prod
+      environment: production
 
   header_app:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'header-app')
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: header-app
-      environment: prod
+      environment: production
 
   profile_app:
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'profile-app')
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: profile-app
-      environment: prod
+      environment: production
 

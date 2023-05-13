@@ -21,17 +21,15 @@ jobs:
         id: setSHAs
         uses: nrwl/nx-set-shas@v3
     
-      - run: |
-          echo "BASE: ${{ steps.setSHAs.outputs.base }}"
-          echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
-        shell: bash
-
       - name: Check for Affected Projects
         uses: gang-of-front/action-nx-affected-list@main
         id: checkForAffected
         with:
           base: ${{ steps.setSHAs.outputs.base }}
           head: ${{ steps.setSHAs.outputs.head }}
+
+      - run: echo ${{ steps.checkForAffected.outputs.affected }}
+        shell: bash
 
   # root_app:
   #   runs-on: ubuntu-latest

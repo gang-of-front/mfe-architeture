@@ -1,3 +1,6 @@
+name: 'setup-install'
+description: 'Github action for setup and install'
+
 inputs:
   node-version:
     description: 'Version of node'

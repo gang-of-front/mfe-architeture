@@ -35,10 +35,6 @@ runs:
         fi
       shell: bash
 
-    - name: Print
-      run: echo ${{ steps.cmd-env.outputs.environment }}
-      shell: bash
-
     - name: Build app
       run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:build
       shell: bash

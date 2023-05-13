@@ -19,5 +19,4 @@ applications.forEach(registerApplication);
 layoutEngine.activate();
 start();
 
-
-const mudou = ''
+const mudou = '';

@@ -1,4 +1,4 @@
-name: Pull Requests 
+name: Pull Requests
 
 on:
   pull_request:
@@ -78,5 +78,3 @@ jobs:
   #   with:
   #     appName: profile-app
   #     environment: production
-
-

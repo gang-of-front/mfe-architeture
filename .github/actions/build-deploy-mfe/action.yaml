@@ -28,11 +28,15 @@ runs:
     - name: Environments variables
       id: cmd-env
       run: |
-        if [ "${{ inputs.environment }}" = "production" ]; then 
+        if [ "production" = "${{ inputs.environment }}" ]; then 
           echo "environment=prod" >> $GITHUB_OUTPUT
         else 
           echo "environment=stg" >> $GITHUB_OUTPUT
         fi
+      shell: bash
+
+    - name: Print
+      run: echo ${{ steps.cmd-env.outputs.environment }}
       shell: bash
 
     - name: Build app
@@ -44,7 +48,7 @@ runs:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         R2_ENDPOINT: ${{ inputs.R2_ENDPOINT }}
-      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=${{ steps.cmd-env.environment }}
+      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=${{ steps.cmd-env.outputs.environment }}
       shell: bash
 
     - name: Update import map
@@ -52,5 +56,5 @@ runs:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         R2_ENDPOINT: ${{ inputs.R2_ENDPOINT }}
-      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:update-import-map --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --domainBucket='https://assets.gangoffront.com' --remoteVerify=false --environment=${{ steps.cmd-env.environment }}
+      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:update-import-map --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --domainBucket='https://assets.gangoffront.com' --remoteVerify=false --environment=${{ steps.cmd-env.outputs.environment }}
       shell: bash

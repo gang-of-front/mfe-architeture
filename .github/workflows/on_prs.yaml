@@ -28,10 +28,12 @@ jobs:
           base: ${{ steps.setSHAs.outputs.base }}
           head: ${{ steps.setSHAs.outputs.head }}
 
-      - run: |
-          echo aff: ${{ steps.checkForAffected.outputs.affected }}
-          echo hasAff: ${{ steps.checkForAffected.outputs.hasAffected }}
-        shell: bash
+      - if: contains(steps.checkForAffected.outputs.affected, 'header-app')
+        name: Deploy header-app
+        uses: ./.github/workflows/workflow-mfe.yaml
+        with:
+          appName: articles-app
+          environment: staging
 
   # root_app:
   #   runs-on: ubuntu-latest

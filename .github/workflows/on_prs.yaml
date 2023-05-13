@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: staging
+    outputs:
+      affected: ${{ steps.checkForAffected.outputs.affected }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -28,13 +30,14 @@ jobs:
           base: ${{ steps.setSHAs.outputs.base }}
           head: ${{ steps.setSHAs.outputs.head }}
 
-      - if: contains(steps.checkForAffected.outputs.affected, 'header-app')
-        name: Deploy header-app
-        uses: ./.github/workflows/workflow-mfe.yaml
-        with:
-          appName: articles-app
-          environment: staging
-
+  header-app:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'header-app')
+    secrets: inherit
+    with:
+      appName: header-app
+      environment: staging
   # root_app:
   #   runs-on: ubuntu-latest
   #   environment:

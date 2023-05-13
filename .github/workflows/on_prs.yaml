@@ -17,14 +17,8 @@ jobs:
       - name: Setup & Install
         uses: ./.github/actions/setup-install
 
-      - run: git fetch --no-tags --prune --depth=5 origin main
-
-      - name: Check for Affected Projects
-        uses: gang-of-front/action-nx-affected-list@main
-        id: checkForAffected
-        with:
-          base: main
-          head: ${GITHUB_SHA}
+      - run: pnpm nx print-affected
+        shell: bash
   # root_app:
   #   runs-on: ubuntu-latest
   #   environment:

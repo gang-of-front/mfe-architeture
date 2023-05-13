@@ -37,7 +37,7 @@ jobs:
     secrets: inherit
     with:
       appName: header-app
-      environment: staging
+      environment: stg
   # root_app:
   #   runs-on: ubuntu-latest
   #   environment:

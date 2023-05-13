@@ -28,7 +28,13 @@ jobs:
           base: ${{ steps.setSHAs.outputs.base }}
           head: ${{ steps.setSHAs.outputs.head }}
 
-      - run: echo ${{ steps.checkForAffected.outputs.affected }}
+      - run: |
+          echo affApp: ${{ steps.checkForAffected.outputs.affectedApps }}
+          echo hasAffApp: ${{ steps.checkForAffected.outputs.hasAffectedApps }}
+          echo affLib: ${{ steps.checkForAffected.outputs.affectedLibs }}
+          echo hasAffLib: ${{ steps.checkForAffected.outputs.hasAffectedLibs }}
+          echo aff: ${{ steps.checkForAffected.outputs.affected }}
+          echo hasAff: ${{ steps.checkForAffected.outputs.hasAffected }}
         shell: bash
 
   # root_app:

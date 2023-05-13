@@ -26,8 +26,13 @@ jobs:
           echo "HEAD: ${{ steps.setSHAs.outputs.head }}"
         shell: bash
 
-      - run: pnpm nx print-affected --base=${{ steps.setSHAs.outputs.base }} --head=${{ steps.setSHAs.outputs.head }}
-        shell: bash
+      - name: Check for Affected Projects
+        uses: dkhunt27/action-nx-affected-list@v4
+        id: checkForAffected
+        with:
+          base: ${{ steps.setSHAs.outputs.base }}
+          head: ${{ steps.setSHAs.outputs.head }}
+
   # root_app:
   #   runs-on: ubuntu-latest
   #   environment:

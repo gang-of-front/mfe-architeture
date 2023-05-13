@@ -18,6 +18,8 @@ jobs:
       - name: Check for Affected Projects
         uses: gang-of-front/action-nx-affected-list@main
         id: checkForAffected
+        with:
+          base: main
   # root_app:
   #   runs-on: ubuntu-latest
   #   environment:

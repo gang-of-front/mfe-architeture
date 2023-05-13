@@ -9,7 +9,7 @@ jobs:
   root_app:
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: prod
     steps:
       - uses: actions/checkout@v3
 
@@ -32,33 +32,33 @@ jobs:
     secrets: inherit
     with:
       appName: root
-      environment: production
+      environment: prod
 
   articles-app:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: articles-app
-      environment: production
+      environment: prod
 
   footer_app:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: footer-app
-      environment: production
+      environment: prod
 
   header_app:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: header-app
-      environment: production
+      environment: prod
 
   profile_app:
     uses: ./.github/workflows/workflow-mfe.yaml
     secrets: inherit
     with:
       appName: profile-app
-      environment: production
+      environment: prod
 

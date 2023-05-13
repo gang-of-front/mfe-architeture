@@ -6,6 +6,7 @@
   "author": "",
   "license": "MIT",
   "scripts": {
+    "nx": "nx",
     "prepare": "husky install"
   },
   "devDependencies": {

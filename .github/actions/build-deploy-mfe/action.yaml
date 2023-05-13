@@ -15,6 +15,10 @@ inputs:
     description: 'App name to execute'
     required: true
 
+  environment:
+    description: 'Environment'
+    required: true
+
 runs:
   using: "composite"
   steps:
@@ -27,7 +31,7 @@ runs:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         R2_ENDPOINT: ${{ inputs.R2_ENDPOINT }}
-      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=prod
+      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:sync --dist dist --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --environment=${{ inputs.environment }}
       shell: bash
 
     - name: Update import map
@@ -35,5 +39,5 @@ runs:
         AWS_ACCESS_KEY_ID: ${{ inputs.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
         R2_ENDPOINT: ${{ inputs.R2_ENDPOINT }}
-      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:update-import-map --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --domainBucket='https://assets.gangoffront.com' --remoteVerify=false --environment=prod
+      run: pnpm nx run @gang-of-front/${{ inputs.APP_NAME }}:update-import-map --hash="${GITHUB_SHA:0:7}" --bucket=demo-gangoffront-com --s3Endpoint="${R2_ENDPOINT}" --domainBucket='https://assets.gangoffront.com' --remoteVerify=false --environment=${{ inputs.environment }}
       shell: bash

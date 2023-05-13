@@ -1,0 +1,95 @@
+name: Pull Requests
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  affected:
+    runs-on: ubuntu-latest
+    environment:
+      name: staging
+    outputs:
+      affected: ${{ steps.checkForAffected.outputs.affected }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: setSHAs
+        uses: nrwl/nx-set-shas@v3
+    
+      - name: Check for Affected Projects
+        uses: gang-of-front/action-nx-affected-list@main
+        id: checkForAffected
+        with:
+          base: ${{ steps.setSHAs.outputs.base }}
+          head: ${{ steps.setSHAs.outputs.head }}
+
+  header-app:
+    uses: ./.github/workflows/workflow-mfe.yaml
+    needs: [affected]
+    if: contains(needs.affected.outputs.affected, 'header-app')
+    secrets: inherit
+    with:
+      appName: header-app
+      environment: stg
+  # root_app:
+  #   runs-on: ubuntu-latest
+  #   environment:
+  #     name: production
+  #   steps:
+  #     - uses: actions/checkout@v3
+
+  #     - name: Setup & Install
+  #       uses: ./.github/actions/setup-install
+
+  #     - name: Build app
+  #       run: pnpm nx build
+  #       shell: bash
+
+  #     - name: Deploy root app
+  #       uses: cloudflare/wrangler-action@2.0.0
+  #       with:
+  #         apiToken: ${{ secrets.CF_API_TOKEN }}
+  #         accountId: ${{ secrets.CF_ACCOUNT_ID }}
+  #         command: pages publish apps/root/dist --project-name=demo-gangoffront-com
+
+  # root_assets:
+  #   uses: ./.github/workflows/workflow-mfe.yaml
+  #   secrets: inherit
+  #   with:
+  #     appName: root
+  #     environment: production
+
+  # articles-app:
+  #   uses: ./.github/workflows/workflow-mfe.yaml
+  #   secrets: inherit
+  #   with:
+  #     appName: articles-app
+  #     environment: production
+
+  # footer_app:
+  #   uses: ./.github/workflows/workflow-mfe.yaml
+  #   secrets: inherit
+  #   with:
+  #     appName: footer-app
+  #     environment: production
+
+  # header_app:
+  #   uses: ./.github/workflows/workflow-mfe.yaml
+  #   secrets: inherit
+  #   with:
+  #     appName: header-app
+  #     environment: production
+
+  # profile_app:
+  #   uses: ./.github/workflows/workflow-mfe.yaml
+  #   secrets: inherit
+  #   with:
+  #     appName: profile-app
+  #     environment: production

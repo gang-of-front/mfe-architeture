@@ -16,6 +16,10 @@ const router = createBrowserRouter(
       element: <AuthPage />,
     },
     {
+      path: "/register",
+      element: <AuthPage />,
+    },
+    {
       path: "/view",
       element: <ViewPage />,
     },

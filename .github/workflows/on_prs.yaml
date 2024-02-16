@@ -25,9 +25,16 @@ jobs:
         id: checkForAffected
 
   replay:
-    uses: ./.github/actions/replay
-    with:
-      args: user-flows
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Replay
+        uses: ./.github/actions/replay
+        with:
+          args: user-flows
 
   articles-app:
     needs: [affected]

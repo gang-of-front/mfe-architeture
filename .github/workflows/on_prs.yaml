@@ -31,10 +31,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
       - name: Replay
         uses: ./.github/actions/replay
-        env:
-          PUPPETEER_CACHE_DIR: /root/.cache/puppeteer
         with:
           args: user-flows
 

@@ -24,6 +24,21 @@ jobs:
         uses: ./.github/actions/affected
         id: checkForAffected
 
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
+
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      - run: node node_modules/@puppeteer/replay/lib/cli.js user-flows
+
   articles-app:
     needs: [affected]
     if: contains(needs.affected.outputs.affected, 'articles-app')

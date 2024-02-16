@@ -1,0 +1,24 @@
+{
+  "title": "creditas-site navigation",
+  "steps": [
+    {
+      "type": "navigate",
+      "url": "https://www.creditas.com/?experiment=CRMIT-015b"
+    },
+    {
+      "type": "waitForElement",
+      "target": "main",
+      "selectors": [
+        "aria/Use seu carro, imóvel ou salário e tenha o melhor crédito"
+      ],
+      "visible": true
+    },
+    {
+      "type": "click",
+      "target": "main",
+      "selectors": [["xpath///*[@data-testid=\"button-cta\"]"]],
+      "offsetY": 18,
+      "offsetX": 111
+    }
+  ]
+}

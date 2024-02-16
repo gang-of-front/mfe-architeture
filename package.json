@@ -15,7 +15,6 @@
     "nx": "16.1.4"
   },
   "dependencies": {
-    "@puppeteer/replay": "^3.0.0",
-    "puppeteer": "^22.0.0"
+    "puppeteer": "22.0.0"
   }
 }

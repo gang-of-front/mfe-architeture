@@ -4,6 +4,9 @@ importers:
 
   .:
     dependencies:
+      '@puppeteer/replay':
+        specifier: ^3.0.0
+        version: 3.0.0(puppeteer@22.0.0)
       puppeteer:
         specifier: 22.0.0
         version: 22.0.0
@@ -2995,6 +2998,13 @@ packages:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: true
 
+  /@colors/colors@1.5.0:
+    resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
+    engines: {node: '>=0.1.90'}
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@discoveryjs/json-ext@0.5.7:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
@@ -3507,6 +3517,25 @@ packages:
       yargs: 17.7.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@puppeteer/replay@3.0.0(puppeteer@22.0.0):
+    resolution: {integrity: sha512-dCBS6rrtCoxxQ1nNA4COuV6xY+T6ZqnsPagfdmFZX+7HgG3aT2Kk6A8h0hSNgy2R5a1yTFIu7HfOA3zfm2pIhQ==}
+    engines: {node: '>=18'}
+    hasBin: true
+    peerDependencies:
+      lighthouse: '>=10.0.0'
+      puppeteer: '>=22.0.0'
+    peerDependenciesMeta:
+      lighthouse:
+        optional: true
+      puppeteer:
+        optional: true
+    dependencies:
+      cli-table3: 0.6.3
+      colorette: 2.0.20
+      puppeteer: 22.0.0
+      yargs: 17.7.2
     dev: false
 
   /@remix-run/router@1.6.1:
@@ -4877,6 +4906,15 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /cli-table3@0.6.3:
+    resolution: {integrity: sha512-w5Jac5SykAeZJKntOxJCrm63Eg5/4dhMWIcuTbo9rpE+brgaSZo0RuNJZeOyMgsUdhDeojvgyQLmjI+K50ZGyg==}
+    engines: {node: 10.* || >= 12.*}
+    dependencies:
+      string-width: 4.2.3
+    optionalDependencies:
+      '@colors/colors': 1.5.0
+    dev: false
+
   /cli-width@3.0.0:
     resolution: {integrity: sha512-FxqpkPPwu1HjuN93Omfm4h8uIanXofW0RxVEW3k5RKx+mJJYSthzNhp32Kzxxy3YAEZ/Dc/EWN1vZRY0+kOhbw==}
     engines: {node: '>= 10'}
@@ -4953,7 +4991,6 @@ packages:
 
   /colorette@2.0.20:
     resolution: {integrity: sha512-IfEDxwoWIjkeXL1eXcDiow4UbKjhLdq6/EuSVR9GMN7KVH3r9gQ83e73hsz1Nd1T3ijd5xv1wcWRYO+D6kCI2w==}
-    dev: true
 
   /colors@1.4.0:
     resolution: {integrity: sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==}

@@ -37,7 +37,7 @@ jobs:
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
 
-      - run: npx @puppeteer/replay user-flows
+      - run: pnpx @puppeteer/replay user-flows
 
   articles-app:
     needs: [affected]

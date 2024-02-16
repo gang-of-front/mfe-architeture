@@ -33,6 +33,8 @@ jobs:
 
       - name: Replay
         uses: ./.github/actions/replay
+        env:
+          PUPPETEER_CACHE_DIR: /root/.cache/puppeteer
         with:
           args: user-flows
 

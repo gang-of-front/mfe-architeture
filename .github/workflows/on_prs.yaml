@@ -31,12 +31,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Replay
-        uses: ./.github/actions/replay
-        env:
-          PUPPETEER_EXECUTABLE_PATH: "/root/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome"
-        with:
-          args: user-flows
+      - uses: browser-actions/setup-chrome@v1
+        id: setup-chrome
+
+      - run: npx @puppeteer/replay user-flows
 
   articles-app:
     needs: [affected]

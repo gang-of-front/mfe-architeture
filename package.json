@@ -13,5 +13,9 @@
     "@gang-of-front/cli": "1.4.2",
     "husky": "8.0.3",
     "nx": "16.1.4"
+  },
+  "dependencies": {
+    "@puppeteer/replay": "^3.0.0",
+    "puppeteer": "^22.0.0"
   }
 }

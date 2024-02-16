@@ -3,7 +3,7 @@
   "steps": [
     {
       "type": "navigate",
-      "url": "<https://www.creditas.com/?experiment=CRMIT-015b>"
+      "url": "https://www.creditas.com/?experiment=CRMIT-015b"
     },
     {
       "type": "waitForElement",

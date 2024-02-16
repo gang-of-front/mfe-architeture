@@ -34,7 +34,7 @@ jobs:
       - name: Replay
         uses: ./.github/actions/replay
         env:
-          PUPPETEER_EXECUTABLE_PATH: ""
+          PUPPETEER_EXECUTABLE_PATH: "/root/.cache/puppeteer/chrome/linux-121.0.6167.85/chrome-linux64/chrome"
         with:
           args: user-flows
 

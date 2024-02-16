@@ -24,6 +24,11 @@ jobs:
         uses: ./.github/actions/affected
         id: checkForAffected
 
+  replay:
+    uses: ./github/actions/replay
+    with:
+      args: user-flows
+
   articles-app:
     needs: [affected]
     if: contains(needs.affected.outputs.affected, 'articles-app')

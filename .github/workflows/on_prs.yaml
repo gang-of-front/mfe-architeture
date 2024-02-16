@@ -31,6 +31,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup & Install
+        uses: ./.github/actions/setup-install
+
       - uses: browser-actions/setup-chrome@v1
         id: setup-chrome
 

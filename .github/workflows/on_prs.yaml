@@ -31,13 +31,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: browser-actions/setup-chrome@v1
-        id: setup-chrome
-
       - name: Replay
         uses: ./.github/actions/replay
         env:
-          PUPPETEER_EXECUTABLE_PATH: "${{ steps.setup-chrome.outputs.chrome-path }}"
+          PUPPETEER_EXECUTABLE_PATH: ""
         with:
           args: user-flows
 

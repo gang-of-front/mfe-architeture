@@ -17,7 +17,7 @@ runs:
       uses: nrwl/nx-set-shas@v3
   
     - name: Check for Affected Projects
-      uses: gang-of-front/action-nx-affected-list@main
+      uses: gang-of-front/action-nx-affected-list@fix-array-parse
       id: checkForAffected
       with:
         base: ${{ steps.setSHAs.outputs.base }}
